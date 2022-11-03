@@ -1,0 +1,11 @@
+N_magico = 2
+Valore = 0
+Tentativi= 1
+while Tentativi <= 10 :
+ Valore = int(input("Indovina il numero magico: "))
+if (Valore == N_magico):
+    print("hai indovinato!") 
+else:
+    Tentativi = Tentativi + 1
+    if (Tentativi == 11) :
+        print("Non hai indovinato il numero magico.")

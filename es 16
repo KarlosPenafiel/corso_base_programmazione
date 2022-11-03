@@ -1,0 +1,10 @@
+max = 1
+min = 100000
+while True:
+    numero = int(input("inserisci un numero, premi 0 per terminare: "))
+    if(numero == 0):
+        break
+    else:
+        if(numero >= max):
+            max = numero
+            

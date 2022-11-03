@@ -1,0 +1,13 @@
+from operator import truediv
+
+
+i = 0
+somma = 0
+while True:
+    numero = int(input("inserisci numero: "))
+    if(numero == 0):
+        print(somma / i)
+        break
+    else:
+        somma = somma + numero
+    i = i + 1
