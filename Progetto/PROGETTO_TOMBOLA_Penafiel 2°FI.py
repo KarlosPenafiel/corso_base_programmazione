@@ -1,0 +1,163 @@
+import random
+i = 100
+#Scegli tra le 6 schede, con i numeri fortunati, stai attento ad ogni numero che esce, e se ce l'hai scrivi si, se non ce l'hai scrivi no.
+#Attenzione! se scrivi che hai un numero e non ce l'hai, si aggiungerà un numero alla tua lista.
+#Se pensi che ne hai saltato uno puoi controllare digitando "check" ma salterai un turno. se effettivamente l'hai saltato digita "togli" e ti chiederà il numero che hai dimenticato.
+ 
+# #variabile con numeri estratti e le schede che useremo.
+
+n=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87,
+88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+Scheda1 = [5,50,39,70,93,10,19,15,22]
+Scheda2 = [31,51,60,89,93,2,18,11,64]
+Scheda3 = [53,17,23,15,68,96,3,11,92]
+Scheda4 = [14,69,24,13,48,56,65,20,1]
+Scheda5 = [24,19,91,76,4,99,12,38,43]
+Scheda6 = [16,25,61,29,10,99,56,7,89]
+print ("schede: ")
+print(Scheda1)
+print(Scheda2)
+print(Scheda3)
+print(Scheda4)
+print(Scheda5)
+print(Scheda6)
+#chiediamo al giocatore 1 la schedina e in base alla risposta la variabile giocatore diventa la scheda che ha scelto, se non si scrive correttamente, printa errore
+giocatore1 = str(input("Giocatore 1 scegli una schedina tra le 6, scrivi 'schedina 1' ecc: "))
+if (giocatore1 == "schedina 1"):
+    giocatore1 = Scheda1
+else:
+        if (giocatore1 == "schedina 2"):
+            giocatore1 = Scheda2
+        else:
+            if (giocatore1 == "schedina 3"):
+                giocatore1 = Scheda3
+            else:
+                if (giocatore1 == "schedina 4"):
+                    giocatore1 = Scheda4
+                else:
+                    if (giocatore1 == "schedina 5"):
+                        giocatore1 = Scheda5
+                    else:
+                        if (giocatore1 == "schedina 6"):
+                            giocatore1 = Scheda6
+                        else:
+                            print("errore, rifai")
+                            
+#chiediamo al giocatore 2 la schedina e in base alla risposta la variabile giocatore diventa la scheda che ha scelto, se non si scrive correttamente, printa errore
+giocatore2 = str(input("Giocatore 2 scegli una schedina tra le 6, scrivi 'schedina 1' ecc: "))
+if (giocatore2 == "schedina 1"):
+    giocatore2 = Scheda1
+else:
+    if (giocatore2 == "schedina 2"):
+        giocatore2 = Scheda2
+    else:
+        if (giocatore2 == "schedina 3"):
+            giocatore2 = Scheda3
+        else:
+            if (giocatore2 == "schedina 4"):
+                giocatore2 = Scheda4
+            else:
+                if (giocatore2 == "schedina 5"):
+                    giocatore2 = Scheda5
+                else:
+                    if (giocatore2 == "schedina 6"):
+                        giocatore2 = Scheda6
+                    else:
+                        print("errore, rifai")
+#controlla se i giocatori hanno scelto le stesse schedine.
+if (giocatore1 == giocatore2):
+    print("non potete scegliere le stesse schedine")
+else:
+#fin quando la i (100) è minore di 0 continua a generare un numero random tra la lista n e toglierlo da quella lista. 
+    while(i >= 0):
+        print ("Giocatore 1: ",giocatore1)
+        print ("Giocatore 2: ",giocatore2)
+        nrandom= random.choices(n)
+        n = [i for i in n if i not in nrandom]
+        print ("il numero che è uscito è: ",nrandom)
+        i = i - 1
+#chiediamo all'utente se il numero è suo, se si controllare se il numero random è nella lista giocatore 1, se vero togliamo, se falso aggiungiamo un numero da 1 a 99 che non sia già nella lista giocatore 1
+        risposta1 = str(input("primo giocatore, è il tuo numero? (si/no): "))
+        if (risposta1 == "si"):
+            if all([item in giocatore1 for item in nrandom]):
+                giocatore1 = [i for i in giocatore1 if i not in nrandom]
+                print("ok, numero trovato.")
+                risposta2 = str(input("secondo giocatore, è il tuo numero? (si/no): "))
+                if (risposta2 == "si"):
+                    if all([item in giocatore2 for item in nrandom]):
+                        giocatore2 = [i for i in giocatore2 if i not in nrandom]
+                        print("ok, numero trovato.")
+                    else:
+                        aggiunto = random.randrange(1,99)
+                        if aggiunto in giocatore2:
+                            while aggiunto in giocatore2:
+                                aggiunto = random.randrange(1,99)
+                                break
+                        else:
+                            print("errore, aggiunto un numero alla tua scheda")
+                            giocatore2.append(aggiunto)
+            else:
+                aggiunto = random.randrange(1,99)
+                if aggiunto in giocatore1:
+                    while(aggiunto in giocatore1):
+                            aggiunto = random.randrange(1,99)
+                            break
+                else:
+                    print("errore, aggiunto un numero alla tua scheda")
+                    giocatore1.append(aggiunto)
+                    risposta2 = str(input("secondo giocatore, è il tuo numero? (si/no): "))
+                    if (risposta2 == "si"):
+                        if all([item in giocatore2 for item in nrandom]):
+                            giocatore2 = [i for i in giocatore2 if i not in nrandom]
+                            print("ok, numero trovato.")
+                        else:
+                            aggiunto = random.randrange(1,99)
+                            if aggiunto in giocatore2:
+                                while aggiunto in giocatore2:
+                                    aggiunto = random.randrange(1,99)
+                                    break
+                            else:
+                                print("errore, aggiunto un numero alla tua scheda")
+                                giocatore2.append(aggiunto)
+#stessa cosa per il secondo giocatore, nel caso il primo rispondesse no
+        else:
+            risposta2 = str(input("secondo giocatore, è il tuo numero? (si/no): "))
+            if (risposta2 == "si"):
+                if all([item in giocatore2 for item in nrandom]):
+                    giocatore2 = [i for i in giocatore2 if i not in nrandom]
+                    print("ok, numero trovato.")
+                else:
+                    aggiunto = random.randrange(1,99)
+                    if aggiunto in giocatore2:
+                        while aggiunto in giocatore2:
+                            aggiunto = random.randrange(1,99)
+                            break
+                    else:
+                        print("errore, aggiunto un numero alla tua scheda")
+                        giocatore2.append(aggiunto)
+#qua definiamo quando finisce il ciclo.  
+            if (giocatore1 == []):
+                print("Hai vinto giocatore 1")
+                break
+            if (giocatore2 == []):
+                print("Hai vinto giocatore 2")
+                break
+#qui se scriviamo le paroli check, printa la lista di numeri mancanti, così controlliamo. se scriviamo togli, andiamo a chidere il numero dimenticato e se non è presente in n ma è presente in giocatore1 o giocatore2 allora lo togliamo.
+            if risposta1 == "check":
+                print (n)
+            if risposta2 == "check":
+                print(n)
+            if risposta1 == "togli":
+                n_dimenticato = int(input("che numero ti sei dimenticato?: "))
+                if n_dimenticato not in n:
+                    if n_dimenticato in giocatore1:
+                        giocatore1.remove(n_dimenticato)
+                    if n_dimenticato in giocatore2:
+                        giocatore2.remove(n_dimenticato)
+            if risposta2 == "togli":
+                n_dimenticato = int(input("che numero ti sei dimenticato?: "))
+                if n_dimenticato not in n:
+                    if n_dimenticato in giocatore1:
+                        giocatore1.remove(n_dimenticato)
+                    if n_dimenticato in giocatore2:
+                        giocatore2.remove(n_dimenticato)

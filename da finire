@@ -1,0 +1,14 @@
+i = 1
+numero = ""
+output = ""
+while i <= 100:
+    numero:str == i
+    l = len(numero)
+    if l == 1:
+        output = numero * "A"
+    if l == 2:
+        output = numero[l-1] * "B"
+        l = l - 1
+        output = output + numero[l-1] * "A"
+    print (output)
+    i = i + 1
